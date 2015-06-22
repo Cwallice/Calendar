@@ -5,17 +5,17 @@ const DAYS_BLOCK_COLUMNS = 7;
 class MonthlyPaneCell extends React.Component{
   render() {
     return <td>
-              <MonthCell/>
+              <DayCell/>
             </td>;
   }
 }
 
 class MonthlyPaneRow extends React.Component{
   buildCell=()=>{
-    return <MonthPaneCell/>
+    return <MonthlyPaneCell/>
   }
   render() {
-    let cells = new Array( MONTH_BLOCK_COLUMNS ).map( buildCell );
+    let cells = new Array( DAYS_BLOCK_COLUMNS ).map( buildCell );
     return <tr>
               { cells }
             </tr>;
@@ -24,7 +24,7 @@ class MonthlyPaneRow extends React.Component{
 
 class MonthlyPane extends React.Component{
   buildRow = ()=>{
-    return <MonthPaneRow/>
+    return <MonthlyPaneRow/>
   }
   render() {
     let rows = new Array( 4 ).map( buildRow );
@@ -36,4 +36,4 @@ class MonthlyPane extends React.Component{
   }
 }
 
-export default MonthPane;
+export default MonthlyPane;
