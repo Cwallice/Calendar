@@ -30,8 +30,10 @@ class DatePicker extends React.Component{
     super( props );
     this.state =  {
       date: this.props.date,
-      mode: Modes.weekly
+      mode: Modes.weekly,
+      inFocus: false
     };
+    this.onFocus = this.onFocus.bind( this );
   }
   onFocus() {
     this.setState( { visible: true } );

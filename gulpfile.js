@@ -4,39 +4,39 @@ var source      = require("vinyl-source-stream");
 var babelify    = require("babelify");
 var watchify    = require("watchify");
 var browserify  = require("browserify");
-
-// Input file.
-var browser = browserify("./src/DatePicker.js", watchify.args);
-browser.exclude( "react" );
-var bundler = watchify( browser );
+var path        = require( "path" );
+//bundle datepicker
 
 
-// Babel transform
-bundler.transform(babelify);
 
-// On updates recompile
-bundler.on("update", bundle);
-
-function bundle() {
-
-    gutil.log("Compiling JS...");
-
+function compile( bundler, opts ) {
+    var name = path.basename( opts.dest );
+    var dir = path.dirname( opts.dest );
+    gutil.log("Compiling");
     return bundler.bundle()
         .on("error", function (err) {
             gutil.log(err.message);
             this.emit("end");
         })
-        .pipe(source("DatePicker.js"))
-        .pipe(gulp.dest("./dist")).on( "end", function() {
-    			gutil.log( "Bundling Finished", gutil.colors.cyan( "DatePicker.js" ) );
+        .pipe( source( name ) )
+        .pipe(gulp.dest( dir )).on( "end", function() {
+          gutil.log( "Bundling Finished", gutil.colors.cyan( name ) );
         } );
 }
 
+function bundle( opts ){
+  var bundler = watchify( browserify( { entries: [ opts.source ], debug: true } ) );
+  bundler.transform(babelify);
+  bundler.on("update", function() { compile( bundler, opts ); } );
+  compile( bundler, opts );
+  return bundler;
+}
 /**
  * Gulp task alias
  */
-gulp.task("bundle", function () {
-    return bundle();
+gulp.task( "bundle", function () {
+    bundle( { source: "./src/DatePicker.js", dest:"./dist/DatePicker.js" } );
+    return bundle( { source: "./example/js/app.js", dest:"./example/js/bundle.js" } );
 });
 
 
