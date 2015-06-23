@@ -1,5 +1,6 @@
 const React = require( "react" );
 const DayCell = require( "./DayCell" );
+const MonthlyPaneHeaders = require ( "./MonthlyPaneHeaders" );
 const DAYS_BLOCK_COLUMNS = 7;
 const DAYS_BLOCK_ROWS = 6;
 
@@ -27,6 +28,8 @@ class MonthlyPaneRow extends React.Component{
   }
 }
 
+class MonthlyPaneHeaders extends React.Component
+
 class MonthlyPane extends React.Component{
   constructor( props ) {
       super( props );
@@ -38,6 +41,7 @@ class MonthlyPane extends React.Component{
     }
     return <div>
               <table>
+                <MonthlyPaneHeaders/>
                 { rows }
               </table>
           </div>;
