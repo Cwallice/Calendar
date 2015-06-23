@@ -1,21 +1,22 @@
 const React = require( "react" );
+const MonthCell = require( "./MonthCell" );
 const MONTH_BLOCK_COLUMNS = 3;
 const MONTH_BLOCK_ROWS = 4;
 
 class YearlyPaneCell extends React.Component{
   render() {
     return <td>
-              <MonthCell/>
+              <MonthCell/>;
             </td>;
   }
 }
 
 class YearlyPaneRow extends React.Component{
-  buildCell=()=>{
-    return <MonthPaneCell/>
+  buildCell() {
+    return <YearlyPaneCell/>;
   }
   render() {
-    let cells = new Array( MONTH_BLOCK_COLUMNS ).map( buildCell );
+    let cells = new Array( MONTH_BLOCK_COLUMNS ).map( this.buildCell );
     return <tr>
               { cells }
             </tr>;
@@ -23,11 +24,11 @@ class YearlyPaneRow extends React.Component{
 }
 
 class YearlyPane extends React.Component{
-  buildRow = ()=>{
-    return <MonthPaneRow/>
+  buildRow() {
+    return <YearlyPaneRow/>;
   }
   render() {
-    let rows = new Array( MONTH_BLOCK_ROWS ).map( buildRow );
+    let rows = new Array( MONTH_BLOCK_ROWS ).map( this.buildRow );
     return <div>
               <table>
                 { rows }

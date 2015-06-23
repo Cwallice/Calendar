@@ -11,7 +11,7 @@ class YearsPaneCell extends React.Component{
 }
 
 class YearsPaneRow extends React.Component{
-    buildCell = ( c, i ) =>{
+    buildCell( c, i ){
       return <YearsPaneCell year={ this.props.from + i + 1 }/>;
     }
     render() {
@@ -23,10 +23,10 @@ class YearsPaneRow extends React.Component{
 }
 
 class YearsPane extends React.Component {
-  buildRow = ( e, i ) => {
+  buildRow( e, i ) {
     return <tr>
               <YearsPaneRow from={ this.props.from }/>
-          </tr>
+          </tr>;
   }
   render() {
     let rows = new Array( YEARS_BLOCK_SIZE ).map( this.buildRow );

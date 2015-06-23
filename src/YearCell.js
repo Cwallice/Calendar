@@ -1,7 +1,7 @@
 const React = require( "react" );
 
 class YearCell extends React.Component{
-  _onClick= ()=>{
+  _onClick(){
     this.props.onSelect( this.props.year );
   }
   render (){

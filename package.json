@@ -1,0 +1,14 @@
+{
+  "name": "react-datepicker",
+  "private": true,
+  "repository": "github:Cwallice/DatePicker",
+  "devDependencies": {
+    "react": "^0.13.1",
+    "gulp": "^3.0.0",
+    "gulp-util": "^3.0.0",
+    "babelify": "^6.1.2",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2",
+    "browserify": "^10.2.4"
+  }
+}
