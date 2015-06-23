@@ -13,11 +13,14 @@ class MonthlyPaneCell extends React.Component{
 }
 
 class MonthlyPaneRow extends React.Component{
-  buildCell() {
-    return <MonthlyPaneCell/>;
+  constructor( props ) {
+      super( props );
   }
   render() {
-    let cells = new Array( DAYS_BLOCK_COLUMNS ).map( this.buildCell );
+    var cells = [];
+    for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
+      cells.push( <MonthlyPaneCell/> );
+    }
     return <tr>
               { cells }
             </tr>;
@@ -25,11 +28,14 @@ class MonthlyPaneRow extends React.Component{
 }
 
 class MonthlyPane extends React.Component{
-  buildRow() {
-    return <MonthlyPaneRow/>;
+  constructor( props ) {
+      super( props );
   }
   render() {
-    let rows = new Array( DAYS_BLOCK_ROWS ).map( this.buildRow );
+    var rows = [];
+    for( let row=0; row<DAYS_BLOCK_ROWS; row++ ){
+      rows.push( <MonthlyPaneRow/> );
+    }
     return <div>
               <table>
                 { rows }

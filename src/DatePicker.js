@@ -8,7 +8,7 @@ const YearsRangePane = require( "./YearsRangePane" );
 const Modes = {
   yearly: "yearly",
   monthly: "monthly",
-  weekly: "weekly"
+  years: "yearsrange"
 };
 
 class PaneSwitch extends React.Component{
@@ -29,8 +29,8 @@ class DatePicker extends React.Component{
   constructor( props ) {
     super( props );
     this.state =  {
-      date: this.props.date,
-      mode: Modes.weekly,
+      date: this.props.date || new Date(),
+      mode: Modes.monthly,
       inFocus: false
     };
     this.onFocus = this.onFocus.bind( this );
@@ -41,7 +41,7 @@ class DatePicker extends React.Component{
   render() {
     return <div>
               <input type="text" onFocus={ this.onFocus }/>
-              <PaneSwitch mode={ Modes.weekly } date={ this.props.date } visible={ !!this.state.inFocus }/>
+              <PaneSwitch mode={ Modes.monthly } date={ this.state.date } visible={ !!this.state.inFocus }/>
           </div>;
   }
 }
