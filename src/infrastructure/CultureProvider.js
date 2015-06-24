@@ -35,8 +35,6 @@ class CultureProvider {
     formattedValue.push( ( "0" + sdate.month ).slice( -2 ) );
     formattedValue.push( ( "0" + sdate.month ).slice( -2 ) );
     formattedValue.push( ( "0000" + sdate.month ).slice( -4 ) );
-
-
     return formattedValue.join( "/" );
   }
 }

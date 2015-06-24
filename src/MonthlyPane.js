@@ -9,7 +9,7 @@ class MonthlyPaneHeader extends React.Component{
   render() {
     let weekdays = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
-      weekdays.push( <th><WeekHeaderCell key={ col }/></th> );
+      weekdays.push( <th><WeekHeaderCell key={ col } weekday={ this.props.cultureProvider.dayName( col ) }/></th> );
     }
     return <tr>
           { weekdays }
@@ -20,7 +20,7 @@ class MonthlyPaneHeader extends React.Component{
 class MonthlyPaneCell extends React.Component{
   render() {
     return <td>
-              <DayCell dayte={ this.props.date }/>;
+              <DayCell date={ this.props.date }/>;
             </td>;
   }
 }
