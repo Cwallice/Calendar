@@ -47,7 +47,7 @@ class MonthlyPane extends React.Component{
   render() {
     var rows = [];
     for( let row=0; row<DAYS_BLOCK_ROWS; row++ ){
-      rows.push( <MonthlyPaneRow key={ row }/> );
+      rows.push( <MonthlyPaneRow key={ row } /> );
     }
     return <div>
               <table>

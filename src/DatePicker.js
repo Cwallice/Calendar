@@ -1,9 +1,8 @@
 const React = require( "react" );
-
-
 const YearlyPane = require( "./YearlyPane" );
 const MonthlyPane = require( "./MonthlyPane" );
 const YearsRangePane = require( "./YearsRangePane" );
+const CultureProvider = require( "./infrastructure/CultureProvider" );
 
 const Modes = {
   yearly: "yearly",
@@ -46,4 +45,11 @@ class DatePicker extends React.Component{
   }
 }
 
-export default DatePicker;
+DatePicker.defaultProps = {
+  CultureProvider: new CultureProvider()
+};
+
+module.exports= {
+  DatePicker: DatePicker,
+  CultureProvider: CultureProvider
+};
