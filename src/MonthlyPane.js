@@ -9,7 +9,11 @@ class MonthlyPaneHeader extends React.Component{
   render() {
     let weekdays = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
-      weekdays.push( <th><WeekHeaderCell key={ col } weekday={ this.props.cultureProvider.dayName( col ) }/></th> );
+      weekdays.push( <th>
+                      <WeekHeaderCell
+                        key={ col }
+                        weekday={ this.props.cultureProvider.dayNameShort( col ) }/>
+                    </th> );
     }
     return <tr>
           { weekdays }
@@ -32,7 +36,7 @@ class MonthlyPaneRow extends React.Component{
   render() {
     var cells = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
-      cells.push( <MonthlyPaneCell key={ col }/> );
+      cells.push( <MonthlyPaneCell key={ col } {...this.props}/> );
     }
     return <tr>
               { cells }
@@ -44,14 +48,17 @@ class MonthlyPane extends React.Component{
   constructor( props ) {
       super( props );
   }
+
   render() {
     var rows = [];
     for( let row=0; row<DAYS_BLOCK_ROWS; row++ ){
-      rows.push( <MonthlyPaneRow key={ row } /> );
+      rows.push( <MonthlyPaneRow key={ row } 
+                                 {...this.props}
+                                 fromDate={ this.nextDate( row ) }/> );
     }
     return <div>
               <table>
-                <MonthlyPaneHeader/>
+                <MonthlyPaneHeader {...this.props}/>
                 { rows }
               </table>
           </div>;

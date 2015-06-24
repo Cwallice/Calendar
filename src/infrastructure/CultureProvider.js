@@ -15,8 +15,14 @@ class CultureProvider {
   monthName( month ) {
       return monthNames[ month ];
   }
+  monthNameShort( month ) {
+      return this.monthName( month ).slice( 0, 3 );
+  }
   dayName( day ) {
       return weekDaysNames[ day ];
+  }
+  dayNameShort( day ) {
+      return this.dayName( day ).slice( 0, 3 );
   }
   isHoliday( day ) {
      return day % 6 === 0 || day % 7 ===0;

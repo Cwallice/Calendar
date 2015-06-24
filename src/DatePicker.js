@@ -40,13 +40,16 @@ class DatePicker extends React.Component{
   render() {
     return <div>
               <input type="text" onFocus={ this.onFocus }/>
-              <PaneSwitch mode={ Modes.monthly } date={ this.state.date } visible={ !!this.state.inFocus }/>
+              <PaneSwitch mode={ Modes.monthly }
+                          date={ this.state.date }
+                          visible={ !!this.state.inFocus }
+                          {...this.props}/>
           </div>;
   }
 }
 
 DatePicker.defaultProps = {
-  CultureProvider: new CultureProvider()
+  cultureProvider: new CultureProvider()
 };
 
 module.exports= {
