@@ -1,14 +1,26 @@
 const React = require( "react" );
 const DayCell = require( "./DayCell" );
-const MonthlyPaneHeaders = require ( "./MonthlyPaneHeaders" );
+const WeekHeaderCell = require ( "./WeekHeaderCell" );
 const DAYS_BLOCK_COLUMNS = 7;
 const DAYS_BLOCK_ROWS = 6;
 
 
+class MonthlyPaneHeader extends React.Component{
+  render() {
+    let weekdays = [];
+    for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
+      weekdays.push( <th><WeekHeaderCell key={ col }/></th> );
+    }
+    return <tr>
+          { weekdays }
+          </tr>;
+  }
+}
+
 class MonthlyPaneCell extends React.Component{
   render() {
     return <td>
-              <DayCell/>;
+              <DayCell dayte={ this.props.date }/>;
             </td>;
   }
 }
@@ -20,15 +32,13 @@ class MonthlyPaneRow extends React.Component{
   render() {
     var cells = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
-      cells.push( <MonthlyPaneCell/> );
+      cells.push( <MonthlyPaneCell key={ col }/> );
     }
     return <tr>
               { cells }
             </tr>;
   }
 }
-
-class MonthlyPaneHeaders extends React.Component
 
 class MonthlyPane extends React.Component{
   constructor( props ) {
@@ -37,11 +47,11 @@ class MonthlyPane extends React.Component{
   render() {
     var rows = [];
     for( let row=0; row<DAYS_BLOCK_ROWS; row++ ){
-      rows.push( <MonthlyPaneRow/> );
+      rows.push( <MonthlyPaneRow key={ row }/> );
     }
     return <div>
               <table>
-                <MonthlyPaneHeaders/>
+                <MonthlyPaneHeader/>
                 { rows }
               </table>
           </div>;
