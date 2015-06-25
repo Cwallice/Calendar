@@ -5,6 +5,7 @@ class CultureProvider {
   constructor( locale="en-us", format="dd/mm/yyyy" ){
     this.locale = locale;
     this.format = format;
+    this.weekDayStart = 0;
   }
   getWeekDaysNames() {
       return weekDaysNames;

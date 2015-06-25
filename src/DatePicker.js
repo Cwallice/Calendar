@@ -49,7 +49,9 @@ class DatePicker extends React.Component{
 }
 
 DatePicker.defaultProps = {
-  cultureProvider: new CultureProvider()
+  cultureProvider: new CultureProvider(),
+  year: new Date().getFullYear(),
+  month: new Date().getMonth()
 };
 
 module.exports= {
