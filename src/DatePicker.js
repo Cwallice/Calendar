@@ -29,7 +29,7 @@ class DatePicker extends React.Component{
     super( props );
     this.state =  {
       date: this.props.date || new Date(),
-      mode: Modes.monthly,
+      mode: Modes.yearly,
       inFocus: false
     };
     this.onFocus = this.onFocus.bind( this );
@@ -40,7 +40,7 @@ class DatePicker extends React.Component{
   render() {
     return <div>
               <input type="text" onFocus={ this.onFocus }/>
-              <PaneSwitch mode={ Modes.monthly }
+              <PaneSwitch mode={ this.state.mode }
                           date={ this.state.date }
                           visible={ !!this.state.inFocus }
                           {...this.props}/>

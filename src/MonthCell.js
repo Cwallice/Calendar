@@ -6,7 +6,7 @@ class MonthCell extends React.Component{
   }
   render() {
     return <div>
-            { this.props.month }
+            { this.props.cultureProvider.monthNameShort( this.props.month ) }
           </div>;
   }
 }

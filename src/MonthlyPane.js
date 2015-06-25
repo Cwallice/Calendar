@@ -3,7 +3,6 @@ const DayCell = require( "./DayCell" );
 const WeekHeaderCell = require ( "./WeekHeaderCell" );
 const DAYS_BLOCK_COLUMNS = 7;
 const DAYS_BLOCK_ROWS = 6;
-//const DAYS_LIMIT = DAYS_BLOCK_ROWS * DAYS_BLOCK_COLUMNS;
 const DAY_TIMESPAN = 24 * 3600 * 1000;
 
 class MonthlyPaneHeader extends React.Component{
@@ -47,34 +46,6 @@ class MonthlyPaneRow extends React.Component{
             </tr>;
   }
 }
-
-
-
-// function getPrevMonth( date ){
-//   if( date.getMonth() === 0 ){
-//     return new Date( date.getFullYear() - 1, 12 );
-//   }
-//   return new Date( date.getFullYear(),  date.getMonth() - 1  );
-// }
-//
-// function getNextMonth( date ){
-//   if( date.getMonth() === 12 ){
-//     return new Date( date.getFullYear() + 1, 0 );
-//   }
-//   return new Date( date.getFullYear(),  date.getMonth() + 1  );
-// }
-
-// function buildDatesRange( fromDate, toDate ){
-//     let diff = toDate - fromDate;
-//     let dates = [];
-//     let date = fromDate|0;
-//
-//     while( diff>0 ){
-//         dates.push( new Date( date + DAY_TIMESPAN ) );
-//         diff-= DAY_TIMESPAN;
-//     }
-//     return dates;
-// }
 
 class MonthlyPane extends React.Component{
   getStartDate(){

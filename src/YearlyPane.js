@@ -6,7 +6,7 @@ const MONTH_BLOCK_ROWS = 4;
 class YearlyPaneCell extends React.Component{
   render() {
     return <td>
-              <MonthCell/>;
+              <MonthCell { ...this.props }/>
             </td>;
   }
 }
@@ -16,7 +16,13 @@ class YearlyPaneRow extends React.Component{
     return <YearlyPaneCell/>;
   }
   render() {
-    let cells = new Array( MONTH_BLOCK_COLUMNS ).map( this.buildCell );
+    let cells = [];
+    for( let col=0; col<MONTH_BLOCK_COLUMNS; col++ ){
+      cells.push( <YearlyPaneCell
+                        key={ col }
+                        {...this.props}
+                        month= { this.props.startMonth + col }/> );
+    }
     return <tr>
               { cells }
             </tr>;
@@ -24,11 +30,16 @@ class YearlyPaneRow extends React.Component{
 }
 
 class YearlyPane extends React.Component{
-  buildRow() {
-    return <YearlyPaneRow/>;
-  }
   render() {
-    let rows = new Array( MONTH_BLOCK_ROWS ).map( this.buildRow );
+    let rows = [];
+    for( let row=0; row<MONTH_BLOCK_ROWS; row++ ){
+      rows.push( <tr>
+                    <YearlyPaneRow
+                        key={ row }
+                        {...this.props}
+                        startMonth= { row * MONTH_BLOCK_COLUMNS }/>
+                  </tr> );
+    }
     return <div>
               <table>
                 { rows }
