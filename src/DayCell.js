@@ -8,4 +8,8 @@ class DayCell extends React.Component{
   }
 }
 
+DayCell.propTypes = {
+  date: React.PropTypes.object.isRequired,
+  onSelect: React.PropTypes.func
+};
 export default DayCell;

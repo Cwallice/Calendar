@@ -20,7 +20,7 @@ class PaneSwitch extends React.Component{
       return <MonthlyPane { ...this.props }/>;
     }
 
-    return <YearsRangePane/>;
+    return <YearsRangePane {...this.props}/>;
   }
 }
 
@@ -29,7 +29,7 @@ class DatePicker extends React.Component{
     super( props );
     this.state =  {
       date: this.props.date || new Date(),
-      mode: Modes.yearly,
+      mode: Modes.years,
       inFocus: false
     };
     this.onFocus = this.onFocus.bind( this );

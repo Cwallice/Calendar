@@ -12,7 +12,7 @@ class MonthCell extends React.Component{
 }
 
 MonthCell.propTypes = {
-  month: React.PropTypes.number,
+  month: React.PropTypes.number.isRequired,
   onSelect: React.PropTypes.func
 };
 
