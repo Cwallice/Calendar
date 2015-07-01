@@ -17,10 +17,17 @@ class NavButton extends React.Component{
 }
 
 class NavigationPane extends React.Component{
+  constructor( props ){
+    super( props );
+    this.onSwitchMode = this.onSwitchMode.bind( this );
+  }
+  onSwitchMode() {
+    this.props.switchMode( this.props.nextMode );
+  }
   render() {
     return <div>
               <NavButton {...this.props} direction={ Direction.Left } on/>
-              { this.props.title }
+              <span onClick={ this.onSwitchMode }>{ this.props.title }</span>
               <NavButton {...this.props} direction={ Direction.Right }/>
             </div>;
   }

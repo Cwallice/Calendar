@@ -26,14 +26,14 @@ class YearsPaneRow extends React.Component{
     }
 }
 
-class YearsPane extends React.Component {
+class YearsRangePane extends React.Component {
   render() {
     let rows = [];
 
-    let fromYear = ( (this.props.year/YEARS_BLOCK_SIZE)|0 ) * YEARS_BLOCK_SIZE;
+    let fromYear = ( (this.props.timeframe.getFullYear()/YEARS_BLOCK_SIZE)|0 ) * YEARS_BLOCK_SIZE;
     for( let row=0; row<YEARS_BLOCK_SIDE; row++ ){
-      rows.push( <tr>
-                    <YearsPaneRow key={ row } fromYear={ fromYear + YEARS_BLOCK_SIDE * row } {...this.props}/>
+      rows.push( <tr key={ row }>
+                    <YearsPaneRow  fromYear={ fromYear + YEARS_BLOCK_SIDE * row } {...this.props}/>
                 </tr> );
     }
     return <div>
@@ -44,4 +44,4 @@ class YearsPane extends React.Component {
   }
 }
 
-export default YearsPane;
+export default YearsRangePane;

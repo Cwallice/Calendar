@@ -10,12 +10,15 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2",
     "browserify": "^10.2.4",
-    "browserify-shim": "^3.8.9"
+    "browserify-shim": "^3.8.9",
+    "babel-runtime": "^5.6.15"
   },
   "browserify-shim": {
     "react": "global:React"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }

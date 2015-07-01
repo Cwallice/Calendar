@@ -1,6 +1,8 @@
 const React = require( "react" );
 const NavigationPane = require ( "./NavigationPane" );
 const Direction = require( "./infrastructure/Direction" );
+const Modes = require( "./infrastructure/Modes" );
+
 class MonthlyNavigation extends React.Component{
   constructor( props ){
     super( props );
@@ -8,13 +10,18 @@ class MonthlyNavigation extends React.Component{
   }
   onNavigate( direction ) {
     let dmonth = direction === Direction.Left ? -1 : 1;
-    this.props.setMonth( this.props.navigationDate.getMonth() + dmonth );
+    let newtimeframe = new Date( +this.props.timeframe );
+    newtimeframe.setMonth( newtimeframe.getMonth() + dmonth );
+    this.props.setTimeframe( newtimeframe );
   }
   getTitle() {
-    return this.props.cultureProvider.monthName( this.props.month );
+    return this.props.cultureProvider.monthName( this.props.timeframe.getMonth() );
   }
   render() {
-    return <NavigationPane {...this.props} title={ this.getTitle() } onNavigate={ this.onNavigate }/>;
+    return <NavigationPane {...this.props}
+                            nextMode = { Modes.Yearly }
+                            title={ this.getTitle() }
+                            onNavigate={ this.onNavigate }/>;
   }
 }
 

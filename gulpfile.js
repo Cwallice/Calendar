@@ -26,7 +26,9 @@ function compile( bundler, opts ) {
 
 function bundle( opts ){
   var bundler = watchify( browserify( { entries: [ opts.source ], debug: true } ) );
-  bundler.transform(babelify);
+  bundler.transform(babelify.configure( {
+    optional: [ "runtime" ]
+  } ) );
   bundler.on("update", function() { compile( bundler, opts ); } );
   compile( bundler, opts );
   return bundler;

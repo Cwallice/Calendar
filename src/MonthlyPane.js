@@ -9,9 +9,8 @@ class MonthlyPaneHeader extends React.Component{
   render() {
     let weekdays = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
-      weekdays.push( <th>
+      weekdays.push( <th key={ col+"mh" }>
                       <WeekHeaderCell
-                        key={ col }
                         weekday={ this.props.cultureProvider.dayNameShort( col ) }/>
                     </th> );
     }
@@ -49,7 +48,8 @@ class MonthlyPaneRow extends React.Component{
 
 class MonthlyPane extends React.Component{
   getStartDate(){
-    let monthStart = new Date( this.props.year, this.props.month );
+    let monthStart = new Date( this.props.timeframe.getFullYear(),
+                               this.props.timeframe.getMonth() );
     let startDate=monthStart;
     let startdiff = monthStart.getDay() - this.props.cultureProvider.weekDayStart;
 

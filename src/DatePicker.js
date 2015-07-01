@@ -9,22 +9,22 @@ const YearsRangeNavigation = require( "./YearsRangeNavigation" );
 const CultureProvider = require( "./infrastructure/CultureProvider" );
 const Modes = require( "./infrastructure/Modes" );
 
-const MainPaneModeViews = {};
+const ModeViews = {};
 
-MainPaneModeViews[ Modes.Yearly ] = YearlyPane;
-MainPaneModeViews[ Modes.Monthly ] = MonthlyPane;
-MainPaneModeViews[ Modes.Years ] = YearsRangePane;
+ModeViews[ Modes.Yearly ] = [ YearlyNavigation, YearlyPane ];
+ModeViews[ Modes.Monthly ] = [ MonthlyNavigation, MonthlyPane ];
+ModeViews[ Modes.Years ] = [ YearsRangeNavigation, YearsRangePane ];
 
 
-const NavigationModeViews = {};
-NavigationModeViews[ Modes.Yearly ] = YearlyNavigation;
-NavigationModeViews[ Modes.Monthly ] = MonthlyNavigation;
-NavigationModeViews[ Modes.Years ] = YearsRangeNavigation;
 
 class SwitchView extends React.Component{
   render() {
-    let component = this.props.cases[ this.props.mode ];
-    return React.createElement( component, this.props );
+    let components = this.props.cases[ this.props.mode ].map(
+          (c, i) => React.createElement( c, Object.assign( {}, this.props, { key: "c"+ i + this.props.mode } ) )
+    );
+    return <div>
+              { components }
+          </div>;
   }
 }
 
@@ -33,26 +33,33 @@ class DatePicker extends React.Component{
     super( props );
     this.state =  {
       date: this.props.date || new Date(),
-      mode: Modes.Years,
-      inFocus: false,
-      navigationDate: new Date()
+      timeframe: new Date(),
+      mode: this.props.mode || Modes.Monthly,
+      inFocus: false
     };
     this.onFocus = this.onFocus.bind( this );
+    this.switchMode = this.switchMode.bind( this );
+    this.setTimeframe = this.setTimeframe.bind( this );
   }
   onFocus() {
     this.setState( { visible: true } );
+  }
+  setTimeframe( newDate ) {
+    this.setState( { timeframe: newDate } );
+  }
+  switchMode( mode ) {
+    this.setState( { mode: mode } );
   }
   render() {
     return <div>
               <input type="text" onFocus={ this.onFocus }/>
               <SwitchView {...this.props}
                           mode={ this.state.mode }
-                          cases={ NavigationModeViews }/>
-              <SwitchView {...this.props}
-                          mode={ this.state.mode }
+                          timeframe = { this.state.timeframe }
                           date={ this.state.date }
-                          visible={ !!this.state.inFocus }
-                          cases ={  MainPaneModeViews }/>
+                          cases={ ModeViews }
+                          setTimeframe={ this.setTimeframe }
+                          switchMode ={ this.switchMode }/>
           </div>;
   }
 }
