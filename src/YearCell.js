@@ -1,16 +1,25 @@
 const React = require( "react" );
+const Modes = require( "./infrastructure/Modes" );
 
 class YearCell extends React.Component{
+  constructor( props ){
+    super( props );
+    this.onClick = this.onClick.bind( this );
+  }
+  onClick() {
+    var timeframe = new Date( +this.props.timeframe );
+    timeframe.setFullYear( this.props.year );
+    this.props.drillDown( Modes.Yearly, timeframe );
+  }
   render (){
-    return <div>
+    return <div onClick={ this.onClick }>
               { this.props.year }
           </div>;
   }
 }
 
 YearCell.propTypes = {
-    year: React.PropTypes.number.isRequired,
-    onSelect: React.PropTypes.func
+    year: React.PropTypes.number.isRequired
 };
 
 export default YearCell;

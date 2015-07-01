@@ -1,8 +1,15 @@
 const React = require( "react" );
 
 class DayCell extends React.Component{
+  constructor( props ) {
+    super( props );
+    this.onClick = this.onClick.bind( this );
+  }
+  onClick(){
+    this.props.setDate( this.props.date );
+  }
   render(){
-    return <div>
+    return <div onClick={ this.onClick }>
             { this.props.date.getDate() }
           </div>;
   }
@@ -10,6 +17,7 @@ class DayCell extends React.Component{
 
 DayCell.propTypes = {
   date: React.PropTypes.object.isRequired,
-  onSelect: React.PropTypes.func
+  setDate: React.PropTypes.func.isRequired
 };
+
 export default DayCell;

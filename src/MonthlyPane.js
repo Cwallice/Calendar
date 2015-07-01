@@ -23,7 +23,7 @@ class MonthlyPaneHeader extends React.Component{
 class MonthlyPaneCell extends React.Component{
   render() {
     return <td>
-              <DayCell date={ this.props.date }/>
+              <DayCell {...this.props} date={ this.props.date }/>
             </td>;
   }
 }
@@ -36,8 +36,8 @@ class MonthlyPaneRow extends React.Component{
     var cells = [];
     for( let col=0; col<DAYS_BLOCK_COLUMNS; col++ ){
       cells.push( <MonthlyPaneCell
+        {...this.props }
          key={ col + this.props.row * DAYS_BLOCK_COLUMNS }
-         {...this.props}
          date={ new Date( +this.props.startDate + DAY_TIMESPAN * col )}/> );
     }
     return <tr>
@@ -63,9 +63,9 @@ class MonthlyPane extends React.Component{
     let startDate = this.getStartDate();
     for( let row=0; row<DAYS_BLOCK_ROWS; row++ ){
       rows.push( <MonthlyPaneRow
+                    {...this.props}
                     key={ row }
                     row={ row }
-                    {...this.props}
                     startDate={ new Date( +startDate + DAY_TIMESPAN * row * DAYS_BLOCK_COLUMNS ) } /> );
     }
     return <div>
