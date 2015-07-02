@@ -11,7 +11,7 @@ class NavButton extends React.Component{
     this.props.onNavigate( this.props.direction );
   }
   render() {
-      return <span onClick={ this.onClick }>{ this.props.direction === Direction.Left ? "Left" : "Right" }
+      return <span className="datepicker-nav-button" onClick={ this.onClick }>{ this.props.direction === Direction.Left ? "Left" : "Right" }
               </span>;
   }
 }
@@ -25,9 +25,9 @@ class NavigationPane extends React.Component{
     this.props.switchMode( this.props.nextMode );
   }
   render() {
-    return <div>
+    return <div className="datepicker-nav-pane">
               <NavButton {...this.props} direction={ Direction.Left } on/>
-              <span onClick={ this.onSwitchMode }>{ this.props.title }</span>
+              <span className="datepicker-nav-title" onClick={ this.onSwitchMode }>{ this.props.title }</span>
               <NavButton {...this.props} direction={ Direction.Right }/>
             </div>;
   }

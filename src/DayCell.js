@@ -9,7 +9,7 @@ class DayCell extends React.Component{
     this.props.setDate( this.props.date );
   }
   render(){
-    return <div onClick={ this.onClick }>
+    return <div className="datepicker-day-cell" onClick={ this.onClick }>
             { this.props.date.getDate() }
           </div>;
   }

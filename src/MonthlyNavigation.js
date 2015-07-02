@@ -15,7 +15,7 @@ class MonthlyNavigation extends React.Component{
     this.props.setTimeframe( newtimeframe );
   }
   getTitle() {
-    return this.props.cultureProvider.monthName( this.props.timeframe.getMonth() );
+    return this.props.cultureProvider.monthName( this.props.timeframe.getMonth() ) + " " +  this.props.timeframe.getFullYear();
   }
   render() {
     return <NavigationPane {...this.props}

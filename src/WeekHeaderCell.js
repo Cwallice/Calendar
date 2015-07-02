@@ -2,7 +2,7 @@ const React = require( "react" );
 
 class WeekHeaderCell extends React.Component{
   render(){
-    return <div>{ this.props.weekday }</div>;
+    return <div className="datepicker-weekheader-cell">{ this.props.weekday.toUpperCase() }</div>;
   }
 }
 

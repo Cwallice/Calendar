@@ -23,7 +23,7 @@ class CultureProvider {
       return weekDaysNames[ day ];
   }
   dayNameShort( day ) {
-      return this.dayName( day ).slice( 0, 3 );
+      return this.dayName( day ).slice( 0, 2 );
   }
   isHoliday( day ) {
      return day % 6 === 0 || day % 7 ===0;

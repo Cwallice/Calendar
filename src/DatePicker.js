@@ -17,12 +17,12 @@ ModeViews[ Modes.Years ] = [ YearsRangeNavigation, YearsRangePane ];
 
 
 
-class SwitchView extends React.Component{
+class ContentPane extends React.Component{
   render() {
     let components = this.props.cases[ this.props.mode ].map(
           (c, i) => React.createElement( c, Object.assign( {}, this.props, { key: "c"+ i + this.props.mode } ) )
     );
-    return <div>
+    return <div className="datepicker-pane">
               { components }
           </div>;
   }
@@ -62,7 +62,7 @@ class DatePicker extends React.Component{
   render() {
     return <div>
               <input type="text" onFocus={ this.onFocus }/>
-              <SwitchView {...this.props}
+              <ContentPane {...this.props}
                           mode={ this.state.mode }
                           timeframe = { this.state.timeframe }
                           selectedDate={ this.state.selectedDate }
