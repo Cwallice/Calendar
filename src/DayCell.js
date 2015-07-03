@@ -1,15 +1,26 @@
 const React = require( "react" );
+const cn = require( "classnames" );
 
 class DayCell extends React.Component{
   constructor( props ) {
     super( props );
     this.onClick = this.onClick.bind( this );
   }
+  isSelected() {
+    return +this.props.date === +this.props.selectedDate;
+  }
+  offTimeframe() {
+    return this.props.date.getMonth() !== this.props.timeframe.getMonth();
+  }
   onClick(){
     this.props.setDate( this.props.date );
   }
   render(){
-    return <div className="datepicker-day-cell" onClick={ this.onClick }>
+    return <div className={ cn( "datepicker-date-cell", {
+                              "datepicker-selected": this.isSelected(),
+                              "datepicker-weekend": this.props.cultureProvider.isHoliday( this.props.date ),
+                              "datepicker-timeframe-off": this.offTimeframe()
+                            } ) } onClick={ this.onClick }>
             { this.props.date.getDate() }
           </div>;
   }

@@ -1,47 +1,81 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 body {
-  font-family: 'Lato';
-}
+  font-family: 'Lato'; }
+
 .datepicker-pane {
   background: #3f4147;
-  box-shadow: 0px 3px 5px #888888;
-  display: inline-block;
-}
-.datepicker-pane td {
-  padding: 5px 7px 5px 7px
-}
+  box-shadow: 0em 3px 5px #888888;
+  display: inline-block; }
+  .datepicker-pane table {
+    margin: 0.625em 0.9375em 0.625em 0.9375em;
+    width: 13.75em;
+    height: 12.8125em; }
+    .datepicker-pane table td {
+      color: #E9E9E9;
+      font-weight: 300;
+      text-align: center; }
 
-.datepicker-pane table {
-  margin: 10px 15px 10px 15px
-}
-
-.datepicker-nav-pane{
+/* navigation panel */
+.datepicker-nav-pane {
   background: #5A5B5F;
   color: #FFFFFF;
   font-weight: 100;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin
-}
-.datepicker-nav-button{
-  display: inline-block;
-  width:20%;
-}
-
-.datepicker-nav-title{
-  display: inline-block;
-  width: auto;
+  position: relative;
   text-align: center;
-}
+  padding-top: 0.9375em;
+  padding-bottom: 0.9375em; }
+  .datepicker-nav-pane .datepicker-nav-title {
+    display: inline-block;
+    cursor: pointer; }
 
-.datepicker-weekheader-cell{
+.datepicker-nav-button {
+  display: inline-block;
+  width: 0.9375em;
+  height: 1.6875em;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.875em;
+  cursor: pointer; }
+  .datepicker-nav-button.arrow-left {
+    background: url("../images/left.png") no-repeat;
+    left: 0.9375em; }
+  .datepicker-nav-button.arrow-right {
+    background: url("../images/right.png") no-repeat;
+    right: 0.9375em; }
+
+/* week days header */
+.datepicker-weekheader-cell {
   color: #FFFFFF;
   font-weight: 400;
   text-align: center;
-}
+  cursor: default; }
 
-.datepicker-day-cell{
-  color: #E9E9E9;
-  text-align: center;
-  font-weight: 300;
-}
+/* date elements */
+.datepicker-date-cell {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.625em;
+  width: 1.6875em; }
+  .datepicker-date-cell.datepicker-today {
+    border-radius: 50%;
+    background-color: #00BD8A; }
+  .datepicker-date-cell.datepicker-weekend {
+    color: #DBD7D7;
+    font-style: italic; }
+  .datepicker-date-cell.datepicker-timeframe-off {
+    color: #6C7D71; }
+
+.datepicker-selected {
+  border-radius: 50%;
+  color: #FFFFFF;
+  background-color: #00BD8A; }
+
+.datepicker-year-cell {
+  display: inline-block;
+  margin: 0.375em;
+  cursor: pointer; }
+
+.datepicker-month-cell {
+  display: inline-block;
+  margin: 0.1875em;
+  cursor: pointer; }

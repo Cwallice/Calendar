@@ -1,6 +1,6 @@
 const React = require( "react" );
 const Direction = require( "./infrastructure/Direction.js" );
-
+const cn = require( "classnames" );
 
 class NavButton extends React.Component{
   constructor( props ){
@@ -11,8 +11,11 @@ class NavButton extends React.Component{
     this.props.onNavigate( this.props.direction );
   }
   render() {
-      return <span className="datepicker-nav-button" onClick={ this.onClick }>{ this.props.direction === Direction.Left ? "Left" : "Right" }
-              </span>;
+      return <span
+                  className={ cn( "datepicker-nav-button", {
+                    "arrow-left": this.props.direction === Direction.Left,
+                    "arrow-right": this.props.direction === Direction.Right
+                  } ) } onClick={ this.onClick }></span>;
   }
 }
 

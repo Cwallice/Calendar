@@ -1,6 +1,6 @@
 const React = require( "react" );
 const Modes = require( "./infrastructure/Modes" );
-
+const cn = require( "classnames" );
 class YearCell extends React.Component{
   constructor( props ){
     super( props );
@@ -11,8 +11,14 @@ class YearCell extends React.Component{
     timeframe.setFullYear( this.props.year );
     this.props.drillDown( Modes.Yearly, timeframe );
   }
+  isSelected() {
+    return this.props.year === this.props.selectedDate.getFullYear();
+  }
   render (){
-    return <div onClick={ this.onClick }>
+    return <div className={ cn( "datepicker-year-cell", {
+                  "datepicker-selected": this.isSelected()
+                } ) }
+               onClick={ this.onClick }>
               { this.props.year }
           </div>;
   }

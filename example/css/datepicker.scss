@@ -1,0 +1,127 @@
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+
+  @return $pixels / $context * 1em;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+
+body {
+  font-family: 'Lato';
+}
+
+.datepicker-pane {
+  background: #3f4147;
+  box-shadow: em(0px) 3px 5px #888888;
+  display: inline-block;
+
+  table {
+    margin: em(10px) em(15px) em(10px) em(15px);
+    width: em(220px);
+    height: em( 205px);
+    td {
+      color: #E9E9E9;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+}
+
+
+/* navigation panel */
+.datepicker-nav-pane{
+  background: #5A5B5F;
+  color: #FFFFFF;
+  font-weight: 100;
+  position: relative;
+  text-align: center;
+  padding-top: em(15px);
+  padding-bottom: em(15px);
+
+  .datepicker-nav-title{
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
+.datepicker-nav-button{
+  display: inline-block;
+  width: em(15px);
+  height: em(27px);
+  position: absolute;
+  top: 50%;
+  margin-top: em(-14px);
+  cursor: pointer;
+
+  &.arrow-left{
+    background: url( '../images/left.png' ) no-repeat;
+    left: em(15px);
+  }
+
+  &.arrow-right{
+    background: url( '../images/right.png' ) no-repeat;
+    right: em(15px);
+  }
+
+}
+
+/* week days header */
+.datepicker-weekheader-cell{
+  color: #FFFFFF;
+  font-weight: 400;
+  text-align: center;
+  cursor: default;
+}
+
+/* date elements */
+.datepicker-date-cell{
+  cursor: pointer;
+  display: inline-block;
+  line-height: em(26px);
+  width: em(27px);
+
+  &.datepicker-today{
+    border-radius: 50%;
+    background-color: #00BD8A;
+  }
+
+  &.datepicker-weekend{
+    color: #DBD7D7;
+    font-style: italic;
+  }
+
+  &.datepicker-timeframe-off{
+    color: #6C7D71;
+  }
+}
+
+.datepicker-selected{
+  border-radius: 50%;
+  color: #FFFFFF;
+  background-color: #00BD8A;//E8736F;
+}
+// datepicker year cell
+
+.datepicker-year-cell{
+  display: inline-block;
+  margin: em(6px);
+  cursor: pointer;
+
+}
+
+//datepicker month cell
+.datepicker-month-cell{
+  display: inline-block;
+  margin: em(3px);
+  cursor: pointer;
+  
+}

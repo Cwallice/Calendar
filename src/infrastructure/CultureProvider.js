@@ -25,14 +25,14 @@ class CultureProvider {
   dayNameShort( day ) {
       return this.dayName( day ).slice( 0, 2 );
   }
-  isHoliday( day ) {
-     return day % 6 === 0 || day % 7 ===0;
+  isHoliday( date ) {
+     return date.getDay() % 6 === 0 || date.getDay() % 7 ===0;
   }
   static splitDate( date ){
     return {
-      day: date.getDay(),
+      day: date.getDate(),
       month: date.getMonth(),
-      year: date.getYear()
+      year: date.getFullYear()
     };
   }
   format( date ){ //format ) {

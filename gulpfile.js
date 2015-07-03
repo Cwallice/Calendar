@@ -5,9 +5,8 @@ var babelify    = require("babelify");
 var watchify    = require("watchify");
 var browserify  = require("browserify");
 var path        = require( "path" );
+var sass        = require( "gulp-sass" );
 //bundle datepicker
-
-
 
 function compile( bundler, opts ) {
     var name = path.basename( opts.dest );
@@ -19,9 +18,7 @@ function compile( bundler, opts ) {
             this.emit("end");
         })
         .pipe( source( name ) )
-        .pipe(gulp.dest( dir )).on( "end", function() {
-          gutil.log( "Bundling Finished", gutil.colors.cyan( name ) );
-        } );
+        .pipe( gulp.dest( dir ) );
 }
 
 function bundle( opts ){
@@ -36,10 +33,21 @@ function bundle( opts ){
 /**
  * Gulp task alias
  */
-gulp.task( "bundle", function () {
+gulp.task( "watch-js", function () {
     bundle( { source: "./src/DatePicker.js", dest:"./dist/DatePicker.js" } );
     return bundle( { source: "./example/js/app.js", dest:"./example/js/bundle.js" } );
 });
 
+gulp.task( "build-scss", function() {
+  console.log("in");
 
-gulp.task( "default", ["bundle"] );
+  return gulp.src( "./example/css/*.scss" )
+    .pipe( sass( { errLogToConsole: true } ) )
+    .pipe( gulp.dest( "./example/css/" ) );
+} );
+
+gulp.task( "watch-scss", [ "build-scss" ], function() {
+  gulp.watch( "./example/css/*.scss", [ "build-scss" ] );
+} );
+
+gulp.task( "default", [ "watch-js", "watch-scss" ] );

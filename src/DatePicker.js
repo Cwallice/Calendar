@@ -20,7 +20,7 @@ ModeViews[ Modes.Years ] = [ YearsRangeNavigation, YearsRangePane ];
 class ContentPane extends React.Component{
   render() {
     let components = this.props.cases[ this.props.mode ].map(
-          (c, i) => React.createElement( c, Object.assign( {}, this.props, { key: "c"+ i + this.props.mode } ) )
+          (c, i) => React.createElement( c, Object.assign( {}, this.props, { key: "c" + i + this.props.mode } ) )
     );
     return <div className="datepicker-pane">
               { components }
@@ -28,12 +28,17 @@ class ContentPane extends React.Component{
   }
 }
 
+function trimDate( date ){
+  var splitted = CultureProvider.splitDate( date );
+  return new Date( splitted.year, splitted.month, splitted.day );
+}
+
 class DatePicker extends React.Component{
   constructor( props ) {
     super( props );
     this.state =  {
-      selectedDate: this.props.date || new Date(),
-      timeframe: new Date(),
+      selectedDate: trimDate( this.props.date || new Date() ),
+      timeframe: trimDate( new Date() ),
       mode: this.props.mode || Modes.Monthly,
       inFocus: false
     };
