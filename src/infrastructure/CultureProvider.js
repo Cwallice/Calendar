@@ -35,13 +35,16 @@ class CultureProvider {
       year: date.getFullYear()
     };
   }
-  format( date ){ //format ) {
+  localize( key ) {
+    return key;
+  }
+  formatted( date ){ //format ) {
     var sdate = CultureProvider.splitDate( date );
     //format = format || this.format;
     var formattedValue = [];
     formattedValue.push( ( "0" + sdate.month ).slice( -2 ) );
-    formattedValue.push( ( "0" + sdate.month ).slice( -2 ) );
-    formattedValue.push( ( "0000" + sdate.month ).slice( -4 ) );
+    formattedValue.push( ( "0" + sdate.day ).slice( -2 ) );
+    formattedValue.push( ( "0000" + sdate.year ).slice( -4 ) );
     return formattedValue.join( "/" );
   }
 }

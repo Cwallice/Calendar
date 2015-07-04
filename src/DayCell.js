@@ -1,5 +1,7 @@
 const React = require( "react" );
 const cn = require( "classnames" );
+let today = new Date();
+today = new Date( today.getFullYear(), today.getMonth(), today.getDate() );
 
 class DayCell extends React.Component{
   constructor( props ) {
@@ -9,6 +11,9 @@ class DayCell extends React.Component{
   isSelected() {
     return +this.props.date === +this.props.selectedDate;
   }
+  isToday() {
+    return  +this.props.date === +today;
+  }
   offTimeframe() {
     return this.props.date.getMonth() !== this.props.timeframe.getMonth();
   }
@@ -17,6 +22,7 @@ class DayCell extends React.Component{
   }
   render(){
     return <div className={ cn( "datepicker-date-cell", {
+                              "datepicker-today": !this.isSelected() && this.isToday(),
                               "datepicker-selected": this.isSelected(),
                               "datepicker-weekend": this.props.cultureProvider.isHoliday( this.props.date ),
                               "datepicker-timeframe-off": this.offTimeframe()

@@ -3,17 +3,25 @@ body {
   font-family: 'Lato'; }
 
 .datepicker-pane {
-  background: #3f4147;
-  box-shadow: 0em 3px 5px #888888;
-  display: inline-block; }
+  background: #3F4147;
+  box-shadow: 0em 0.1875em 0.3125em #888888;
+  display: inline-block;
+  font-size: 15px; }
   .datepicker-pane table {
-    margin: 0.625em 0.9375em 0.625em 0.9375em;
+    margin: 0.625em 0.9375em 0em 0.9375em;
     width: 13.75em;
-    height: 12.8125em; }
+    height: 12.8125em;
+    font-size: 15px; }
     .datepicker-pane table td {
       color: #E9E9E9;
       font-weight: 300;
       text-align: center; }
+
+/*datepicker commons */
+.datepicker-selected, .datepicker-date-cell.datepicker-date-selected {
+  color: #FFFFFF;
+  background-color: #00BD8A;
+  border-radius: 0.8em; }
 
 /* navigation panel */
 .datepicker-nav-pane {
@@ -54,28 +62,43 @@ body {
 .datepicker-date-cell {
   cursor: pointer;
   display: inline-block;
-  line-height: 1.625em;
-  width: 1.6875em; }
+  line-height: 1.5em;
+  width: 1.5625em; }
   .datepicker-date-cell.datepicker-today {
-    border-radius: 50%;
-    background-color: #00BD8A; }
+    text-decoration: underline; }
   .datepicker-date-cell.datepicker-weekend {
-    color: #DBD7D7;
     font-style: italic; }
   .datepicker-date-cell.datepicker-timeframe-off {
     color: #6C7D71; }
-
-.datepicker-selected {
-  border-radius: 50%;
-  color: #FFFFFF;
-  background-color: #00BD8A; }
+  .datepicker-date-cell.datepicker-date-selected {
+    border-radius: 0.8em; }
 
 .datepicker-year-cell {
   display: inline-block;
-  margin: 0.375em;
+  cursor: pointer;
+  line-height: 1.8em;
+  width: 3em;
   cursor: pointer; }
 
 .datepicker-month-cell {
   display: inline-block;
-  margin: 0.1875em;
-  cursor: pointer; }
+  cursor: pointer;
+  width: 2.1em;
+  line-height: 1.8em; }
+
+.datepicker-nav-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  color: #E9E9E9;
+  padding-top: 0.1em;
+  padding-bottom: 0.7em; }
+  .datepicker-nav-bottom span {
+    border-radius: 0.8em;
+    background-color: #303236;
+    width: 6em;
+    line-height: 1.8em;
+    text-align: center;
+    cursor: pointer;
+    margin: auto; }

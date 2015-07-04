@@ -1,18 +1,16 @@
 $browser-context: 16;
-
 @function em($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
-
   @if (unitless($context)) {
     $context: $context * 1px;
   }
-
-
   @return $pixels / $context * 1em;
 }
 
+$font-size: 15px;
+$cell-font-color: #E9E9E9;
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 
 body {
@@ -20,22 +18,28 @@ body {
 }
 
 .datepicker-pane {
-  background: #3f4147;
-  box-shadow: em(0px) 3px 5px #888888;
+  background: #3F4147;
+  box-shadow: em(0px) em(3px) em(5px) #888888;
   display: inline-block;
-
+  font-size: $font-size;
   table {
-    margin: em(10px) em(15px) em(10px) em(15px);
+    margin: em(10px) em(15px) em(0px) em(15px);
     width: em(220px);
     height: em( 205px);
+    font-size: $font-size;
     td {
-      color: #E9E9E9;
+      color: $cell-font-color;
       font-weight: 300;
       text-align: center;
     }
   }
 }
-
+/*datepicker commons */
+.datepicker-selected{
+  color: #FFFFFF;
+  background-color: #00BD8A;//E8736F;
+  border-radius: 0.8em;
+}
 
 /* navigation panel */
 .datepicker-nav-pane{
@@ -86,42 +90,61 @@ body {
 .datepicker-date-cell{
   cursor: pointer;
   display: inline-block;
-  line-height: em(26px);
-  width: em(27px);
+  line-height: em(24px);
+  width: em(25px);
 
   &.datepicker-today{
-    border-radius: 50%;
-    background-color: #00BD8A;
+    text-decoration:underline;
+    //background-color: initial;
   }
 
   &.datepicker-weekend{
-    color: #DBD7D7;
     font-style: italic;
   }
 
   &.datepicker-timeframe-off{
     color: #6C7D71;
   }
+  &.datepicker-date-selected{
+    @extend .datepicker-selected;
+    border-radius: 0.8em;
+  }
 }
 
-.datepicker-selected{
-  border-radius: 50%;
-  color: #FFFFFF;
-  background-color: #00BD8A;//E8736F;
-}
 // datepicker year cell
-
 .datepicker-year-cell{
   display: inline-block;
-  margin: em(6px);
   cursor: pointer;
-
+  line-height: 1.8em;
+  width: 3em;
+  cursor: pointer;
 }
 
 //datepicker month cell
 .datepicker-month-cell{
   display: inline-block;
-  margin: em(3px);
   cursor: pointer;
-  
+  width: 2.1em;
+  line-height: 1.8em;
+}
+
+//bottom navigation
+.datepicker-nav-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  color: $cell-font-color;
+  padding-top: 0.1em;
+  padding-bottom: 0.7em;
+
+  span {
+    border-radius: 0.8em;
+    background-color: #303236;
+    width: 6em;
+    line-height: 1.8em;
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+  }
 }

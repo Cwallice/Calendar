@@ -1,4 +1,4 @@
-const React = require( "react" );
+import React from "react";
 const MonthCell = require( "./MonthCell" );
 const MONTH_BLOCK_COLUMNS = 3;
 const MONTH_BLOCK_ROWS = 4;
