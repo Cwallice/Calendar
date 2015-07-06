@@ -10,7 +10,7 @@ React Datepicker is rather simple component with very humble API:
 | cultureProvider | instance that matches CultureProvider interface, optional                                         |
 | visible         | specifies visibility status, false by default                                                     |
 | style           | html style attribute in JSON format                                                               |
-| onDateChange    | handler that acquires data from widget upon selection: ( date, formattedDate ), optional          |
+| onDateChange    | handler with args from widget ( date: Date, formattedDate:string ), optional                      |
 | onHide          | handler that tells when component is supposed to be closed, optional but highly recommended though|
 
 
