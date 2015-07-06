@@ -7,7 +7,7 @@ React Datepicker is rather simple component with very humble API:
 | Property        | Description
 |-----------------|---------------------------------------------------------------------------------------------------|
 | selectedDate    | date that will be highlighted as selected, set to Today by default, optional                      |
-| cultureProvider | instance that matches CultureProvider interface, optional                                         |
+| cultureProvider | instance that matches [CultureProvider](https://github.com/Cwallice/DatePicker/blob/master/src/infrastructure/CultureProvider.js) interface, optional                                         |
 | visible         | specifies visibility status, false by default                                                     |
 | style           | html style attribute in JSON format                                                               |
 | onDateChange    | handler with args from widget ( date: Date, formattedDate:string ), optional                      |
@@ -19,7 +19,7 @@ React Datepicker is rather simple component with very humble API:
 Don't forget to copy styles from datepicker.scss to start your own experiments.
 
 
-### CultureProvider
+### [CultureProvider](https://github.com/Cwallice/DatePicker/blob/master/src/infrastructure/CultureProvider.js)
 Is meant to be responsible for following behavior:
 - setting start day of a week
 - dates/text localization
