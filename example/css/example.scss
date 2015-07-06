@@ -1,0 +1,47 @@
+@import url( "./datepicker.css" );
+$textbox-font-size: 16px;
+$cell-font-color: #E9E9E9;
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Lato';
+  background: #eeeeee;
+  background: radial-gradient(ellipse at center,  #eeeeee 0%,#cccccc 100%);
+}
+
+*:focus {
+    outline: none;
+}
+//date picker input box
+.datepickerInput{
+  background-color: #FFFFFF;
+  input{
+    width: 11.4em;
+    font-family: "Lato";
+    padding: 0.3em;
+    font-size: $textbox-font-size;
+    font-weight: 100;
+    border: none;
+  }
+  &:after{
+      font-family: FontAwesome;
+      display: inline-block;
+      font-size: 20px;
+      content: "\f073";
+      color: $cell-font-color;
+      padding: 0.3em 0.4em 0.3em 0em;
+  }
+}
+//presentation control
+#datepicker{
+  display: flex;
+  height: 100%;
+  display: -webkit-flex;
+  justify-content:center;
+  -webkit-justify-content:center;
+  align-items:center;
+  -webkit-align-items:center;
+}

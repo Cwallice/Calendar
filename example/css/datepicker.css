@@ -1,16 +1,5 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
-html {
-  overflow-y: scroll; }
-
-body {
-  font-family: 'Lato';
-  background: #eeeeee;
-  background: radial-gradient(ellipse at center, #eeeeee 0%, #cccccc 100%); }
-
-*:focus {
-  outline: none; }
-
 .datepicker-pane {
   background: #3F4147;
   box-shadow: 0em 0.3125em 0.3125em #888888;
@@ -107,29 +96,3 @@ body {
   color: #FFFFFF;
   background-color: #00BD8A;
   border-radius: 0.8em; }
-
-.datepickerInput {
-  background-color: #FFFFFF; }
-  .datepickerInput input {
-    width: 11.4em;
-    font-family: "Lato";
-    padding: 0.3em;
-    font-size: 16px;
-    font-weight: 100;
-    border: none; }
-  .datepickerInput:after {
-    font-family: FontAwesome;
-    display: inline-block;
-    font-size: 20px;
-    content: "\f073";
-    color: #E9E9E9;
-    padding: 0.3em 0.4em 0.3em 0em; }
-
-#datepicker {
-  display: flex;
-  height: 100%;
-  display: -webkit-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  align-items: center;
-  -webkit-align-items: center; }
