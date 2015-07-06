@@ -2,7 +2,7 @@ const React = require( "react" );
 const DayCell = require( "./DayCell" );
 const WeekHeaderCell = require ( "./WeekHeaderCell" );
 const DAYS_BLOCK_COLUMNS = 7;
-const DAYS_BLOCK_ROWS = 6;
+const DAYS_BLOCK_ROWS = 5;
 const DAY_TIMESPAN = 24 * 3600 * 1000;
 
 class MonthlyPaneHeader extends React.Component{

@@ -10,7 +10,9 @@ class DatePickerInput extends React.Component{
       visible: false
     };
     this.onClick = this.onClick.bind( this );
+    this.onKeyDown = this.onKeyDown.bind( this );
     this.onHide = this.onHide.bind( this );
+    this.onChange = this.onChange.bind( this );
   }
   onClick() {
     this.setState( { visible: true } );
@@ -18,19 +20,61 @@ class DatePickerInput extends React.Component{
   onDateChange( date, formattedDate ) {
     this.setState( { date: date, formattedDate: formattedDate } );
   }
+  onKeyDown( e ) {
+    if( e.keyCode === 13 ){
+      this.setState( { visible: true } );
+    }
+  }
+  onChange( e ) {
+    let date = new Date(  e.target.value  );
+    date = isNaN( +date ) ? new Date() : date;
+    this.setState( { date: date, formattedDate: e.target.value } );
+  }
   onHide(){
     this.setState( { visible: false } );
   }
+  ensureMountElement() {
+    if( this.mountElement ){
+      return;
+    }
+
+    var mountElement = document.createElement( "div" );
+    document.body.appendChild( mountElement );
+    this.mountElement = mountElement;
+  }
+  renderDatePicker(){
+    this.ensureMountElement();
+    var boundaries = React.findDOMNode( this ).getBoundingClientRect();
+    React.render( <DatePicker style={ { position: "absolute",
+                                        left: boundaries.left,
+                                        top: boundaries.bottom + 2 }
+                                    }
+                                    onDateChange={ this.onDateChange }
+                                    onHide = { this.onHide }
+                                    visible={ this.state.visible }
+                                    selectedDate={ this.state.date }/>,
+                                    this.mountElement);
+  }
+  disposeDatePicker() {
+    React.unmountComponentAtNode( this.mountElement );
+    this.mountElement.parentNode.removeChild( this.mountElement );
+  }
+  componentDidMount() {
+    this.renderDatePicker();
+  }
+  componentDidUpdate() {
+    this.renderDatePicker();
+  }
+  componentWillUnmount(){
+    this.disposeDatePicker();
+  }
   render() {
-    return <div>
-              <input type="text"
-                    value={ this.state.formattedDate }
-                    onClick={ this.onClick } onTouchStart={ this.onClick }/>
-              <DatePicker onDateChange={ this.onDateChange }
-                          onHide = { this.onHide }
-                          visible={ this.state.visible }/>
-          </div>;
+    return <div className="datepickerInput"><input  ref="datepickerInput" type="text"
+                  value={ this.state.formattedDate }
+                  onKeyDown={ this.onKeyDown }
+                  onChange={ this.onChange }
+                  onClick={ this.onClick } onTouchStart={ this.onClick }/></div>;
   }
 }
 
-React.render( <DatePickerInput/> , document.getElementById( "datepicker" ) );
+React.render(<DatePickerInput/>, document.getElementById( "datepicker" ) );

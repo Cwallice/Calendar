@@ -19,7 +19,7 @@ class YearlyPaneRow extends React.Component{
     let cells = [];
     for( let col=0; col<MONTH_BLOCK_COLUMNS; col++ ){
       cells.push( <YearlyPaneCell
-                        key={ col+this.props.startMonth }
+                        key={ col+"m"+this.props.startMonth }
                         {...this.props}
                         month= { this.props.startMonth + col }/> );
     }
@@ -33,11 +33,10 @@ class YearlyPane extends React.Component{
   render() {
     let rows = [];
     for( let row=0; row<MONTH_BLOCK_ROWS; row++ ){
-      rows.push( <tr key={ row }>
-                    <YearlyPaneRow
+      rows.push( <YearlyPaneRow
                         {...this.props}
-                        startMonth= { row * MONTH_BLOCK_COLUMNS }/>
-                  </tr> );
+                        key={ row + "m" }
+                        startMonth= { row * MONTH_BLOCK_COLUMNS }/>  );
     }
     return <div>
               <table>

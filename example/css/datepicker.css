@@ -1,32 +1,35 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+html {
+  overflow-y: scroll; }
+
 body {
-  font-family: 'Lato'; }
+  font-family: 'Lato';
+  background: #eeeeee;
+  background: radial-gradient(ellipse at center, #eeeeee 0%, #cccccc 100%); }
+
+*:focus {
+  outline: none; }
 
 .datepicker-pane {
   background: #3F4147;
-  box-shadow: 0em 0.1875em 0.3125em #888888;
+  box-shadow: 0em 0.3125em 0.3125em #888888;
   display: inline-block;
-  font-size: 15px; }
+  font-size: 14px; }
   .datepicker-pane table {
     margin: 0.625em 0.9375em 0em 0.9375em;
-    width: 13.75em;
-    height: 12.8125em;
-    font-size: 15px; }
+    width: 13.125em;
+    height: 12.1875em;
+    font-size: 14px; }
     .datepicker-pane table td {
       color: #E9E9E9;
       font-weight: 300;
       text-align: center; }
 
-/*datepicker commons */
-.datepicker-selected, .datepicker-date-cell.datepicker-date-selected {
-  color: #FFFFFF;
-  background-color: #00BD8A;
-  border-radius: 0.8em; }
-
 /* navigation panel */
 .datepicker-nav-pane {
   background: #5A5B5F;
-  color: #FFFFFF;
+  color: #ADADAF;
   font-weight: 100;
   position: relative;
   text-align: center;
@@ -34,62 +37,58 @@ body {
   padding-bottom: 0.9375em; }
   .datepicker-nav-pane .datepicker-nav-title {
     display: inline-block;
-    cursor: pointer; }
+    cursor: pointer;
+    color: #FFFFFF; }
 
 .datepicker-nav-button {
   display: inline-block;
-  width: 0.9375em;
-  height: 1.6875em;
   position: absolute;
   top: 50%;
-  margin-top: -0.875em;
-  cursor: pointer; }
+  margin-top: -0.5em;
+  cursor: pointer;
+  font-family: "FontAwesome";
+  font-size: 1.9em; }
   .datepicker-nav-button.arrow-left {
-    background: url("../images/left.png") no-repeat;
-    left: 0.9375em; }
+    left: 0.6em; }
+  .datepicker-nav-button.arrow-left:before {
+    content: "\f104"; }
   .datepicker-nav-button.arrow-right {
-    background: url("../images/right.png") no-repeat;
-    right: 0.9375em; }
+    right: 0.6em; }
+  .datepicker-nav-button.arrow-right:before {
+    content: "\f105"; }
 
 /* week days header */
 .datepicker-weekheader-cell {
   color: #FFFFFF;
   font-weight: 400;
   text-align: center;
-  cursor: default; }
+  cursor: default;
+  font-size: 0.8em; }
 
-/* date elements */
-.datepicker-date-cell {
+/* datepicker cell elements */
+.datepicker-cell, .datepicker-date-cell, .datepicker-year-cell, .datepicker-month-cell {
   cursor: pointer;
-  display: inline-block;
-  line-height: 1.5em;
-  width: 1.5625em; }
-  .datepicker-date-cell.datepicker-today {
-    text-decoration: underline; }
-  .datepicker-date-cell.datepicker-weekend {
-    font-style: italic; }
-  .datepicker-date-cell.datepicker-timeframe-off {
-    color: #6C7D71; }
-  .datepicker-date-cell.datepicker-date-selected {
-    border-radius: 0.8em; }
+  line-height: 1.6em; }
 
-.datepicker-year-cell {
-  display: inline-block;
-  cursor: pointer;
-  line-height: 1.8em;
-  width: 3em;
-  cursor: pointer; }
+.datepicker-date-cell.datepicker-today {
+  text-decoration: underline; }
 
-.datepicker-month-cell {
-  display: inline-block;
-  cursor: pointer;
-  width: 2.1em;
-  line-height: 1.8em; }
+.datepicker-date-cell.datepicker-weekend {
+  font-style: italic; }
+
+.datepicker-date-cell.datepicker-timeframe-off {
+  color: #6C7D71; }
+
+.datepicker-date-cell.datepicker-date-selected {
+  border-radius: 0.8em; }
 
 .datepicker-nav-bottom {
   display: flex;
+  display: -webkit-flex;
   justify-content: center;
+  -webkit-justify-content: center;
   align-items: center;
+  -webkit-align-items: center;
   font-weight: 100;
   color: #E9E9E9;
   padding-top: 0.1em;
@@ -102,3 +101,35 @@ body {
     text-align: center;
     cursor: pointer;
     margin: auto; }
+
+/*datepicker commons */
+.datepicker-selected, .datepicker-date-cell.datepicker-date-selected {
+  color: #FFFFFF;
+  background-color: #00BD8A;
+  border-radius: 0.8em; }
+
+.datepickerInput {
+  background-color: #FFFFFF; }
+  .datepickerInput input {
+    width: 11.4em;
+    font-family: "Lato";
+    padding: 0.3em;
+    font-size: 16px;
+    font-weight: 100;
+    border: none; }
+  .datepickerInput:after {
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: 20px;
+    content: "\f073";
+    color: #E9E9E9;
+    padding: 0.3em 0.4em 0.3em 0em; }
+
+#datepicker {
+  display: flex;
+  height: 100%;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center; }

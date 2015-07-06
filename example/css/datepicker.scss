@@ -9,23 +9,38 @@ $browser-context: 16;
   @return $pixels / $context * 1em;
 }
 
-$font-size: 15px;
+
+$font-size: 14px;
 $cell-font-color: #E9E9E9;
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+$cell-height: 1.6em;
+$textbox-font-size: 16px;
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+
+html {
+  overflow-y: scroll;
+}
 
 body {
   font-family: 'Lato';
+  background: #eeeeee;
+  background: radial-gradient(ellipse at center,  #eeeeee 0%,#cccccc 100%);
+}
+
+*:focus {
+    outline: none;
 }
 
 .datepicker-pane {
   background: #3F4147;
-  box-shadow: em(0px) em(3px) em(5px) #888888;
+  box-shadow: em(0px) em(5px) em(5px) #888888;
   display: inline-block;
   font-size: $font-size;
   table {
     margin: em(10px) em(15px) em(0px) em(15px);
-    width: em(220px);
-    height: em( 205px);
+    width: em(210px);
+    height: em( 195px);
     font-size: $font-size;
     td {
       color: $cell-font-color;
@@ -34,17 +49,12 @@ body {
     }
   }
 }
-/*datepicker commons */
-.datepicker-selected{
-  color: #FFFFFF;
-  background-color: #00BD8A;//E8736F;
-  border-radius: 0.8em;
-}
+
 
 /* navigation panel */
 .datepicker-nav-pane{
   background: #5A5B5F;
-  color: #FFFFFF;
+  color: #ADADAF;
   font-weight: 100;
   position: relative;
   text-align: center;
@@ -54,26 +64,33 @@ body {
   .datepicker-nav-title{
     display: inline-block;
     cursor: pointer;
+    color: #FFFFFF;
   }
 }
 
 .datepicker-nav-button{
   display: inline-block;
-  width: em(15px);
-  height: em(27px);
   position: absolute;
   top: 50%;
-  margin-top: em(-14px);
+  margin-top: -0.5em;
   cursor: pointer;
+  font-family: "FontAwesome";
+  font-size: 1.9em;
 
   &.arrow-left{
-    background: url( '../images/left.png' ) no-repeat;
-    left: em(15px);
+    left: 0.6em;
+  }
+  &.arrow-left:before{
+    content: "\f104";
+
   }
 
   &.arrow-right{
-    background: url( '../images/right.png' ) no-repeat;
-    right: em(15px);
+    right: 0.6em;
+  }
+
+  &.arrow-right:before{
+    content: "\f105";
   }
 
 }
@@ -84,18 +101,22 @@ body {
   font-weight: 400;
   text-align: center;
   cursor: default;
+  font-size: 0.8em;
 }
 
-/* date elements */
-.datepicker-date-cell{
+/* datepicker cell elements */
+.datepicker-cell{
   cursor: pointer;
-  display: inline-block;
-  line-height: em(24px);
-  width: em(25px);
+  line-height: $cell-height;
+}
+
+// datepicker year cell,
+// for customization purposes there is an aditional class for date cell
+.datepicker-date-cell{
+  @extend .datepicker-cell;
 
   &.datepicker-today{
     text-decoration:underline;
-    //background-color: initial;
   }
 
   &.datepicker-weekend{
@@ -111,28 +132,26 @@ body {
   }
 }
 
-// datepicker year cell
+// datepicker year cell,
+// for customization purposes there is an aditional class for year cell
 .datepicker-year-cell{
-  display: inline-block;
-  cursor: pointer;
-  line-height: 1.8em;
-  width: 3em;
-  cursor: pointer;
+  @extend .datepicker-cell;
 }
 
 //datepicker month cell
+// for customization purposes there is an aditional class for month cell
 .datepicker-month-cell{
-  display: inline-block;
-  cursor: pointer;
-  width: 2.1em;
-  line-height: 1.8em;
+  @extend .datepicker-cell;
 }
 
 //bottom navigation
 .datepicker-nav-bottom{
   display: flex;
+  display: -webkit-flex;
   justify-content: center;
+  -webkit-justify-content: center;
   align-items: center;
+  -webkit-align-items: center;
   font-weight: 100;
   color: $cell-font-color;
   padding-top: 0.1em;
@@ -147,4 +166,43 @@ body {
     cursor: pointer;
     margin: auto;
   }
+}
+
+/*datepicker commons */
+.datepicker-selected{
+  color: #FFFFFF;
+  background-color: #00BD8A;//E8736F;
+  border-radius: 0.8em;
+}
+
+
+//date picker input box
+.datepickerInput{
+  background-color: #FFFFFF;
+  input{
+    width: 11.4em;
+    font-family: "Lato";
+    padding: 0.3em;
+    font-size: $textbox-font-size;
+    font-weight: 100;
+    border: none;
+  }
+  &:after{
+      font-family: FontAwesome;
+      display: inline-block;
+      font-size: 20px;
+      content: "\f073";
+      color: $cell-font-color;
+      padding: 0.3em 0.4em 0.3em 0em;
+  }
+}
+//presentation control
+#datepicker{
+  display: flex;
+  height: 100%;
+  display: -webkit-flex;
+  justify-content:center;
+  -webkit-justify-content:center;
+  align-items:center;
+  -webkit-align-items:center;
 }

@@ -20,9 +20,13 @@ ModeViews[ Modes.Years ] = [ YearsRangeNavigation, YearsRangePane, BottomNavigat
 class ContentPane extends React.Component{
   render() {
     let components = this.props.cases[ this.props.mode ].map(
-          (c, i) => React.createElement( c, Object.assign( {}, this.props, { key: "c" + i + this.props.mode } ) )
+          (c, i) => React.createElement( c, Object.assign( {},
+                                                  this.props, {
+                                                        key: "c" + i + this.props.mode,
+                                                        style: {}
+                                                      } ) )
     );
-    return <div className="datepicker-pane">
+    return <div className="datepicker-pane" style={ this.props.style }>
               { components }
           </div>;
   }
@@ -43,14 +47,16 @@ class DatePicker extends React.Component{
     this.drillDown = this.drillDown.bind( this );
     this._trackOutsideClick = this._trackOutsideClick.bind( this );
     this._handleCloseKey = this._handleCloseKey.bind( this );
-    this.state = this.initState( this.props );
+    this.state = this.initState( this.props, {} );
   }
-  initState( props ){
-    return  {
-      selectedDate: trimDate( props.selectedDate || ( this.state && this.state.selectedDate ) || new Date() ),
-      timeframe: ( this.state && this.state.timeframe ) || trimDate( new Date() ),
-      mode: props.mode || Modes.Monthly,
-    };
+  initState( props, state ){
+    var newstate = {};
+    newstate.mode = props.mode || Modes.Monthly;
+    if( props.selectedDate !== state.selectedDate || state.selectedDate === undefined ){
+      newstate.selectedDate = trimDate( props.selectedDate || new Date() );
+      newstate.timeframe = state.selectedDate;
+    }
+    return newstate;
   }
   setTimeframe( newDate ) {
     newDate = trimDate( newDate );
@@ -89,7 +95,7 @@ class DatePicker extends React.Component{
     }
   }
   componentWillReceiveProps( newProps ){
-    this.setState( this.initState( newProps ) );
+    this.setState( this.initState( newProps, this.state ) );
   }
   componentDidMount(){
     document.addEventListener( "mousedown", this._trackOutsideClick );
@@ -120,8 +126,8 @@ class DatePicker extends React.Component{
 
 DatePicker.defaultProps = {
   cultureProvider: new CultureProvider(),
-  alwaysVisible: false,
   visible: false,
+  style: {},
   onHide: function(){}
 };
 

@@ -32,9 +32,9 @@ class YearsRangePane extends React.Component {
 
     let fromYear = ( (this.props.timeframe.getFullYear()/YEARS_BLOCK_SIZE)|0 ) * YEARS_BLOCK_SIZE;
     for( let row=0; row<YEARS_BLOCK_SIDE; row++ ){
-      rows.push( <tr key={ row }>
-                    <YearsPaneRow  fromYear={ fromYear + YEARS_BLOCK_SIDE * row } {...this.props}/>
-                </tr> );
+      rows.push( <YearsPaneRow  key={ row+"y" }
+                                fromYear={ fromYear + YEARS_BLOCK_SIDE * row }
+                                {...this.props}/> );
     }
     return <div>
               <table>
