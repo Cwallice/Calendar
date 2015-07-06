@@ -13,15 +13,19 @@ $browser-context: 16;
 $font-size: 14px;
 $cell-font-color: #E9E9E9;
 $cell-height: 1.6em;
-$textbox-font-size: 16px;
+$text-font-name: "Lato";
+$symbol-font-name: "FontAwesome";
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 
 
 // DATEPICKER CSS
+
+//Datepicker main pane
 .datepicker-pane {
   background: #3F4147;
+  font-family: $text-font-name;
   box-shadow: em(0px) em(5px) em(5px) #888888;
   display: inline-block;
   font-size: $font-size;
@@ -62,7 +66,7 @@ $textbox-font-size: 16px;
   top: 50%;
   margin-top: -0.5em;
   cursor: pointer;
-  font-family: "FontAwesome";
+  font-family: $symbol-font-name;
   font-size: 1.9em;
 
   &.arrow-left{
@@ -83,22 +87,14 @@ $textbox-font-size: 16px;
 
 }
 
-/* week days header */
-.datepicker-weekheader-cell{
-  color: #FFFFFF;
-  font-weight: 400;
-  text-align: center;
-  cursor: default;
-  font-size: 0.8em;
-}
+
 
 /* datepicker cell elements */
 .datepicker-cell{
   cursor: pointer;
   line-height: $cell-height;
 }
-
-// datepicker year cell,
+// day cell
 // for customization purposes there is an aditional class for date cell
 .datepicker-date-cell{
   @extend .datepicker-cell;
@@ -118,6 +114,15 @@ $textbox-font-size: 16px;
     @extend .datepicker-selected;
     border-radius: 0.8em;
   }
+}
+
+/* week days header */
+.datepicker-weekheader-cell{
+  color: #FFFFFF;
+  font-weight: 400;
+  text-align: center;
+  cursor: default;
+  font-size: 0.8em;
 }
 
 // datepicker year cell,

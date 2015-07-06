@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 .datepicker-pane {
   background: #3F4147;
+  font-family: "Lato";
   box-shadow: 0em 0.3125em 0.3125em #888888;
   display: inline-block;
   font-size: 14px; }
@@ -46,14 +47,6 @@
   .datepicker-nav-button.arrow-right:before {
     content: "\f105"; }
 
-/* week days header */
-.datepicker-weekheader-cell {
-  color: #FFFFFF;
-  font-weight: 400;
-  text-align: center;
-  cursor: default;
-  font-size: 0.8em; }
-
 /* datepicker cell elements */
 .datepicker-cell, .datepicker-date-cell, .datepicker-year-cell, .datepicker-month-cell {
   cursor: pointer;
@@ -70,6 +63,14 @@
 
 .datepicker-date-cell.datepicker-date-selected {
   border-radius: 0.8em; }
+
+/* week days header */
+.datepicker-weekheader-cell {
+  color: #FFFFFF;
+  font-weight: 400;
+  text-align: center;
+  cursor: default;
+  font-size: 0.8em; }
 
 .datepicker-nav-bottom {
   display: flex;

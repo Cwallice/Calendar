@@ -3,7 +3,6 @@ html {
   overflow-y: scroll; }
 
 body {
-  font-family: 'Lato';
   background: #eeeeee;
   background: radial-gradient(ellipse at center, #eeeeee 0%, #cccccc 100%); }
 
