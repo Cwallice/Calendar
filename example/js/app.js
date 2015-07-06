@@ -44,7 +44,7 @@ class DatePickerInput extends React.Component{
   }
   renderDatePicker(){
     this.ensureMountElement();
-    var boundaries = React.findDOMNode( this ).getBoundingClientRect();
+    var boundaries = React.findDOMNode( this.refs.datepickerInput ).getBoundingClientRect();
     React.render( <DatePicker style={ { position: "absolute",
                                         left: boundaries.left,
                                         top: boundaries.bottom + 2 }
@@ -60,6 +60,7 @@ class DatePickerInput extends React.Component{
     this.mountElement.parentNode.removeChild( this.mountElement );
   }
   componentDidMount() {
+    React.findDOMNode( this.refs.datepickerInput ).focus();
     this.renderDatePicker();
   }
   componentDidUpdate() {
@@ -69,7 +70,9 @@ class DatePickerInput extends React.Component{
     this.disposeDatePicker();
   }
   render() {
-    return <div className="datepickerInput"><input  ref="datepickerInput" type="text"
+    return <div className="datepickerInput">
+              <input placeholder="Click or press enter"
+                  ref="datepickerInput" type="text"
                   value={ this.state.formattedDate }
                   onKeyDown={ this.onKeyDown }
                   onChange={ this.onChange }
