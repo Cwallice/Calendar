@@ -13,7 +13,14 @@ React Datepicker is rather simple component with very humble API:
 | onDateChange    | handler with args from widget ( date: Date, formattedDate:string ), optional                      |
 | onHide          | handler that tells when component is supposed to be closed, optional but highly recommended though|
 
-
+###Usage
+```
+<DatePicker  onDateChange={ this.onDateChange }
+              onHide = { this.onHide }
+              visible={ this.state.visible }
+              selectedDate={ this.state.date }
+```
+You can find more advanced scenario in [DatePickerInput](https://github.com/Cwallice/DatePicker/blob/master/example/js/app.js)
 ###Appearance customization
 
 Don't forget to copy styles from datepicker.scss to start your own experiments.

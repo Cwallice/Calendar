@@ -15,14 +15,17 @@ class DatePickerInput extends React.Component{
     this.onChange = this.onChange.bind( this );
   }
   onClick() {
-    this.setState( { visible: true } );
+    this.setState( { visible: !this.state.visible } );
+  }
+  onTouchEnd(){
+    this.onClick();
   }
   onDateChange( date, formattedDate ) {
     this.setState( { date: date, formattedDate: formattedDate } );
   }
   onKeyDown( e ) {
     if( e.keyCode === 13 ){
-      this.setState( { visible: true } );
+      this.onClick();
     }
   }
   onChange( e ) {
@@ -30,7 +33,10 @@ class DatePickerInput extends React.Component{
     date = isNaN( +date ) ? new Date() : date;
     this.setState( { date: date, formattedDate: e.target.value } );
   }
-  onHide(){
+  onHide( e ){
+    if( e && e.target === React.findDOMNode( this.refs.datepickerInput ) && e.keyCode!== 27 ){
+      return;
+    }
     this.setState( { visible: false } );
   }
   ensureMountElement() {

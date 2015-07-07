@@ -87,11 +87,11 @@ class DatePicker extends React.Component{
       }
       target = target.parentElement;
     }
-    this.props.onHide();
+    this.props.onHide( e );
   }
   _handleCloseKey( e ){
     if ( e.keyCode===27 ){
-      this.props.onHide();
+      this.props.onHide( e );
     }
   }
   componentWillReceiveProps( newProps ){
