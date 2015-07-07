@@ -17,9 +17,6 @@ class DatePickerInput extends React.Component{
   onClick() {
     this.setState( { visible: !this.state.visible } );
   }
-  onTouchEnd(){
-    this.onClick();
-  }
   onDateChange( date, formattedDate ) {
     this.setState( { date: date, formattedDate: formattedDate } );
   }
@@ -82,7 +79,7 @@ class DatePickerInput extends React.Component{
                   value={ this.state.formattedDate }
                   onKeyDown={ this.onKeyDown }
                   onChange={ this.onChange }
-                  onClick={ this.onClick } onTouchStart={ this.onClick }/></div>;
+                  onClick={ this.onClick } /></div>;
   }
 }
 

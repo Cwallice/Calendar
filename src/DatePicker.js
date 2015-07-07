@@ -99,12 +99,12 @@ class DatePicker extends React.Component{
   }
   componentDidMount(){
     document.addEventListener( "mousedown", this._trackOutsideClick );
-    document.addEventListener( "touchstart", this._trackOutsideClick );
+    // document.addEventListener( "touchstart", this._trackOutsideClick );
     document.addEventListener( "keydown", this._handleCloseKey );
   }
   componentWillUnmount() {
     document.removeEventListener( "mousedown", this._trackOutsideClick );
-    document.removeEventListener( "touchstart", this._trackOutsideClick );
+    // document.removeEventListener( "touchstart", this._trackOutsideClick );
     document.addEventListener( "keydown", this._handleCloseKey );
 
   }
