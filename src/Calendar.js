@@ -38,7 +38,7 @@ function trimDate( date ){
 }
 
 
-class DatePicker extends React.Component{
+class Calendar extends React.Component{
   constructor( props ) {
     super( props );
     this.switchMode = this.switchMode.bind( this );
@@ -51,7 +51,7 @@ class DatePicker extends React.Component{
   }
   initState( props, state ){
     var newstate = {};
-    newstate.mode = props.mode || Modes.Monthly;
+    newstate.mode = props.mode || state.mode || Modes.Monthly;
     if( props.selectedDate !== state.selectedDate || state.selectedDate === undefined ){
       newstate.selectedDate = trimDate( props.selectedDate || new Date() );
       newstate.timeframe = state.selectedDate;
@@ -65,9 +65,9 @@ class DatePicker extends React.Component{
   switchMode( mode ) {
     this.setState( { mode: mode } );
   }
-  setDate( date ){
+  setDate( date, mode ){
     date = trimDate( date );
-    this.setState( { timeframe: date , mode: Modes.Monthly, selectedDate: date },
+    this.setState( { timeframe: date , mode: mode || Modes.Monthly, selectedDate: date },
       ()=> { this.props.onDateChange( date, this.props.cultureProvider.formatted( date ) ); }
     );
   }
@@ -90,21 +90,17 @@ class DatePicker extends React.Component{
     this.props.onHide( e );
   }
   _handleCloseKey( e ){
-    if ( e.keyCode===27 ){
-      this.props.onHide( e );
-    }
+    e.keyCode === 27 && this.props.onHide( e );
   }
   componentWillReceiveProps( newProps ){
     this.setState( this.initState( newProps, this.state ) );
   }
   componentDidMount(){
     document.addEventListener( "mousedown", this._trackOutsideClick );
-    // document.addEventListener( "touchstart", this._trackOutsideClick );
     document.addEventListener( "keydown", this._handleCloseKey );
   }
   componentWillUnmount() {
     document.removeEventListener( "mousedown", this._trackOutsideClick );
-    // document.removeEventListener( "touchstart", this._trackOutsideClick );
     document.removeEventListener( "keydown", this._handleCloseKey );
 
   }
@@ -124,11 +120,11 @@ class DatePicker extends React.Component{
   }
 }
 
-DatePicker.defaultProps = {
+Calendar.defaultProps = {
   cultureProvider: new CultureProvider(),
   visible: false,
   style: {},
   onHide: function(){}
 };
 
-export { DatePicker, CultureProvider };
+export { Calendar, CultureProvider };

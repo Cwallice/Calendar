@@ -1,5 +1,5 @@
 import React from "react";
-import { DatePicker } from "../../src/DatePicker";
+import { Calendar } from "../../src/Calendar";
 
 class DatePickerInput extends React.Component{
   constructor( props ) {
@@ -45,12 +45,16 @@ class DatePickerInput extends React.Component{
     document.body.appendChild( mountElement );
     this.mountElement = mountElement;
   }
-  renderDatePicker(){
+  renderCalendar(){
     this.ensureMountElement();
-    var boundaries = React.findDOMNode( this.refs.datepickerInput ).getBoundingClientRect();
-    React.render( <DatePicker style={ { position: "absolute",
-                                        left: boundaries.left,
-                                        top: boundaries.bottom + 2 }
+    let boundaries = React.findDOMNode( this.refs.datepickerInput ).getBoundingClientRect();
+    let translate = "translateY(" + boundaries.bottom + "px)" + " translateX("+boundaries.left +"px)";
+    React.render( <Calendar style={ {
+                                          transform: translate,
+                                          position: "absolute",
+                                          top: 0,
+                                          left: 0
+                                      }
                                     }
                                     onDateChange={ this.onDateChange }
                                     onHide = { this.onHide }
@@ -58,19 +62,19 @@ class DatePickerInput extends React.Component{
                                     selectedDate={ this.state.date }/>,
                                     this.mountElement);
   }
-  disposeDatePicker() {
+  disposeCalendar() {
     React.unmountComponentAtNode( this.mountElement );
     this.mountElement.parentNode.removeChild( this.mountElement );
   }
   componentDidMount() {
     React.findDOMNode( this.refs.datepickerInput ).focus();
-    this.renderDatePicker();
+    this.renderCalendar();
   }
   componentDidUpdate() {
-    this.renderDatePicker();
+    this.renderCalendar();
   }
   componentWillUnmount(){
-    this.disposeDatePicker();
+    this.disposeCalendar();
   }
   render() {
     return <div className="datepickerInput">

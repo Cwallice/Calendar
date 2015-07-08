@@ -42,7 +42,7 @@ class CultureProvider {
     var sdate = CultureProvider.splitDate( date );
     //format = format || this.format;
     var formattedValue = [];
-    formattedValue.push( ( "0" + sdate.month ).slice( -2 ) );
+    formattedValue.push( ( "0" + ( sdate.month + 1 ) ).slice( -2 ) );
     formattedValue.push( ( "0" + sdate.day ).slice( -2 ) );
     formattedValue.push( ( "0000" + sdate.year ).slice( -4 ) );
     return formattedValue.join( "/" );
