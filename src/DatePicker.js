@@ -67,9 +67,9 @@ class DatePicker extends React.Component{
   }
   setDate( date ){
     date = trimDate( date );
-    this.setState( { timeframe: date , mode: Modes.Monthly, selectedDate: date }, function(){
-      this.props.onDateChange( date, this.props.cultureProvider.formatted( date ) );
-    }.bind( this ) );
+    this.setState( { timeframe: date , mode: Modes.Monthly, selectedDate: date },
+      ()=> { this.props.onDateChange( date, this.props.cultureProvider.formatted( date ) ); }
+    );
   }
   drillDown( mode, timeframe ){
     this.setState( { mode: mode, timeframe: trimDate( timeframe ) } );
