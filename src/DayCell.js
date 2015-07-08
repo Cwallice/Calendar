@@ -1,5 +1,5 @@
-const React = require( "react" );
-const cn = require( "classnames" );
+import React from "react";
+import cn from "classnames";
 let today = new Date();
 today = new Date( today.getFullYear(), today.getMonth(), today.getDate() );
 

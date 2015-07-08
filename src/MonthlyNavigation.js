@@ -1,7 +1,7 @@
-const React = require( "react" );
-const NavigationPane = require ( "./NavigationPane" );
-const Direction = require( "./infrastructure/Direction" );
-const Modes = require( "./infrastructure/Modes" );
+import React from "react";
+import NavigationPane from "./NavigationPane";
+import Direction from "./infrastructure/Direction";
+import Modes from "./infrastructure/Modes";
 
 class MonthlyNavigation extends React.Component{
   constructor( props ){

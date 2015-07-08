@@ -1,6 +1,6 @@
-const React = require( "react" );
-const DayCell = require( "./DayCell" );
-const WeekHeaderCell = require ( "./WeekHeaderCell" );
+import React from "react";
+import DayCell from "./DayCell";
+import WeekHeaderCell from "./WeekHeaderCell";
 const DAYS_BLOCK_COLUMNS = 7;
 const DAYS_BLOCK_ROWS = 6;
 const DAY_TIMESPAN = 24 * 3600 * 1000;

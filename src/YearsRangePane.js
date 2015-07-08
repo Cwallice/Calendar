@@ -1,5 +1,5 @@
-const React = require( "react" );
-const YearCell = require( "./YearCell" );
+import React from "react";
+import YearCell from "./YearCell";
 const YEARS_BLOCK_SIDE = 4;
 const YEARS_BLOCK_SIZE = YEARS_BLOCK_SIDE * YEARS_BLOCK_SIDE;
 

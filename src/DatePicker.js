@@ -1,13 +1,13 @@
-const React = require( "react" );
-const YearlyPane = require( "./YearlyPane" );
-const MonthlyPane = require( "./MonthlyPane" );
-const YearsRangePane = require( "./YearsRangePane" );
-const YearlyNavigation = require( "./YearlyNavigation" );
-const MonthlyNavigation = require( "./MonthlyNavigation" );
-const YearsRangeNavigation = require( "./YearsRangeNavigation" );
-const BottomNavigation = require( "./BottomNavigation" );
-const CultureProvider = require( "./infrastructure/CultureProvider" );
-const Modes = require( "./infrastructure/Modes" );
+import React from "react";
+import YearlyPane from  "./YearlyPane";
+import MonthlyPane from "./MonthlyPane";
+import YearsRangePane from "./YearsRangePane" ;
+import YearlyNavigation from "./YearlyNavigation";
+import MonthlyNavigation from "./MonthlyNavigation";
+import YearsRangeNavigation from "./YearsRangeNavigation";
+import BottomNavigation from "./BottomNavigation";
+import CultureProvider from "./infrastructure/CultureProvider";
+import Modes from "./infrastructure/Modes";
 
 const ModeViews = {};
 
@@ -105,7 +105,7 @@ class DatePicker extends React.Component{
   componentWillUnmount() {
     document.removeEventListener( "mousedown", this._trackOutsideClick );
     // document.removeEventListener( "touchstart", this._trackOutsideClick );
-    document.addEventListener( "keydown", this._handleCloseKey );
+    document.removeEventListener( "keydown", this._handleCloseKey );
 
   }
   render() {
@@ -131,7 +131,4 @@ DatePicker.defaultProps = {
   onHide: function(){}
 };
 
-module.exports= {
-  DatePicker: DatePicker,
-  CultureProvider: CultureProvider
-};
+export { DatePicker, CultureProvider };

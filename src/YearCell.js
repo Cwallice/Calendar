@@ -1,6 +1,6 @@
-const React = require( "react" );
-const Modes = require( "./infrastructure/Modes" );
-const cn = require( "classnames" );
+import React from "react";
+import Modes from "./infrastructure/Modes";
+import cn from "classnames";
 class YearCell extends React.Component{
   constructor( props ){
     super( props );

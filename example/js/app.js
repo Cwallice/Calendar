@@ -1,5 +1,5 @@
-const React = require( "react" );
-const DatePicker = require( "../../src/DatePicker" ).DatePicker;
+import React from "react";
+import { DatePicker } from "../../src/DatePicker";
 
 class DatePickerInput extends React.Component{
   constructor( props ) {

@@ -1,5 +1,5 @@
-const React = require( "react" );
-const Modes = require( "./infrastructure/Modes" );
+import React from  "react";
+import Modes from  "./infrastructure/Modes";
 
 class BottomNavigation extends React.Component{
   drillDown( timeframe ) {

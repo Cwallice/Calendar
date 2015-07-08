@@ -1,6 +1,6 @@
-const React = require( "react" );
-const Direction = require( "./infrastructure/Direction.js" );
-const cn = require( "classnames" );
+import React from "react";
+import Direction from"./infrastructure/Direction.js";
+import cn from "classnames";
 
 class NavButton extends React.Component{
   constructor( props ){
