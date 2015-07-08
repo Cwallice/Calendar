@@ -34,7 +34,7 @@ function bundle( opts ){
  * Gulp task alias
  */
 gulp.task( "watch-js", function () {
-    bundle( { source: "./src/DatePicker.js", dest:"./dist/DatePicker.js" } );
+    bundle( { source: "./src/Calendar.js", dest:"./dist/Calendar.js" } );
     return bundle( { source: "./example/js/app.js", dest:"./example/js/bundle.js" } );
 });
 
